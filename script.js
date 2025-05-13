@@ -1,6 +1,27 @@
 // script.js
 
 window.addEventListener('load', () => {
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navbar = document.querySelector('.navbar');
+    
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    }
+    
+    // Close mobile menu when clicking on a nav link
+    const navLinks = document.querySelectorAll('.navbar ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navbar.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
+
+    // Partners carousel
     const track = document.getElementById('carousel-track');
     const carousel = document.getElementById('partners-carousel');
     const cards = Array.from(track.children);
@@ -33,4 +54,4 @@ window.addEventListener('load', () => {
   
     animate();
   
-  });
+});
